@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Practicas03</string>
+    <string name="splash_screen_logo">Logo de la aplicación en la pantalla de carga</string>
 </resources>
