@@ -9,6 +9,28 @@
         android:id="@+id/fragmentLauncher"
         android:name="com.example.practicas03.FragmentLauncher"
         android:label="fragment_launcher"
-        tools:layout="@layout/fragment_launcher" />
+        tools:layout="@layout/fragment_launcher" >
+        <action
+            android:id="@+id/action_fragmentLauncher_to_webBrowserFragment"
+            app:destination="@id/webBrowserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webBrowserFragment"
+        android:name="com.example.practicas03.WebBrowserFragment"
+        android:label="fragment_web_browser"
+        tools:layout="@layout/fragment_web_browser" >
+        <action
+            android:id="@+id/action_webBrowserFragment_to_browserViewerFragment"
+            app:destination="@id/browserViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/browserViewerFragment"
+        android:name="com.example.practicas03.BrowserViewerFragment"
+        android:label="fragment_browser_viewer"
+        tools:layout="@layout/fragment_browser_viewer" >
+        <action
+            android:id="@+id/action_browserViewerFragment_to_webBrowserFragment"
+            app:destination="@id/webBrowserFragment" />
+    </fragment>
 
 </navigation>
