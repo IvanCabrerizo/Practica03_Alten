@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <ImageView
+    <ImageView
         android:id="@+id/listBrowserItemImgBrowserIcon"
         android:layout_width="@dimen/dp120"
         android:layout_height="@dimen/dp120"
         android:contentDescription="@string/listBrowserItemImgBrowserIconDescription"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/listBrowserItemGuideLineVerticalStart"
+        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
 
 
     <com.google.android.material.textview.MaterialTextView
@@ -21,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp20"
         app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Hola" />
+        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop"
+        tools:text="@string/labelTextTest" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listBrowserItemLabelYear"
@@ -31,7 +30,7 @@
         android:layout_marginStart="@dimen/dp20"
         app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
         app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
-        tools:text="Hola" />
+        tools:text="@string/labelTextTest" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listBrowserItemLabelCompany"
@@ -40,19 +39,16 @@
         android:layout_marginStart="@dimen/dp10"
         app:layout_constraintStart_toEndOf="@id/listBrowserItemLabelYear"
         app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
-        tools:text="Hola" />
+        tools:text="@string/labelTextTest" />
 
     <ImageView
         android:id="@+id/listBrowserItemImgMobileIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp20"
         android:contentDescription="@string/listBrowserItemImgMobileIconDescription"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemLabelCompany"
-        app:layout_constraintStart_toEndtOf=""
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
+        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
 
     <ImageView
         android:id="@+id/listBrowserItemImgWebIcon"
@@ -61,8 +57,29 @@
         android:layout_marginTop="@dimen/dp20"
         android:contentDescription="@string/listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemLabelCompany"
-        app:layout_constraintTop_toBottomOf="@id/listBrowserItemImgMobileIcon"
-        app:layout_constraintEnd_toEndOf="parent"/>-->
+        app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
+        app:layout_constraintTop_toBottomOf="@id/listBrowserItemImgMobileIcon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/listBrowserItemGuideLineVerticalStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalStart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/listBrowserItemGuideLineVerticalEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalEnd" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/listBrowserItemGuideLineHorizontalTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineHorizontalTop" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

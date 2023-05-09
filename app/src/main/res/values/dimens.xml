@@ -6,4 +6,8 @@
     <dimen name="dp120">120dp</dimen>
     <dimen name="dp20">20dp</dimen>
     <dimen name="dp10">10dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="marginPercentGuideLineVerticalStart">0.04</dimen>
+    <dimen name="marginPercentGuideLineVerticalEnd">0.96</dimen>
+    <dimen name="marginPercentGuideLineHorizontalTop">0.02</dimen>
 </resources>
