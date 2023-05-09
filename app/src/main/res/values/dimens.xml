@@ -2,4 +2,8 @@
 <resources>
     <dimen name="half_bias">0.5</dimen>
     <dimen name="dp200">200dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp10">10dp</dimen>
 </resources>
