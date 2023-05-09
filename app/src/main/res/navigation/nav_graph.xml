@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentLauncher"
-        android:name="com.example.practicas03.FragmentLauncher"
+        android:name="com.example.practicas03.LauncherFragment"
         android:label="fragment_launcher"
         tools:layout="@layout/fragment_launcher" >
         <action

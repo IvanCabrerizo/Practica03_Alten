@@ -1,6 +1,5 @@
 package com.example.practicas03.data.model
 
-
 enum class CompatibleOperatingSystems(val operatingSystem: String) {
     WINDOWS("Windows"),
     MAC("Mac OS"),
