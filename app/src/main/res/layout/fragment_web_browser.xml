@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/webBrowserToolbarListTitle"
-            app:titleMarginStart="@dimen/dp50" />
+            app:titleMarginStart="@dimen/dp50"
+            app:menu=""/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

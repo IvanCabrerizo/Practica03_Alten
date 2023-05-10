@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.practicas03.adapter.WebBrowserListAdapter
+import com.example.practicas03.data.mockBrowser
 import com.example.practicas03.databinding.FragmentWebBrowserBinding
 
 class WebBrowserFragment : Fragment() {
@@ -22,5 +24,13 @@ class WebBrowserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val webBrowserRecyclerView = binding.attendanceListCalendar
+        val webBrowserAdapter = WebBrowserListAdapter()
+
+        webBrowserRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        webBrowserRecyclerView.adapter = webBrowserAdapter
+
+        webBrowserAdapter.submitList(mockBrowser(10))
     }
 }

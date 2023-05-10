@@ -10,4 +10,5 @@
     <dimen name="marginPercentGuideLineVerticalStart">0.04</dimen>
     <dimen name="marginPercentGuideLineVerticalEnd">0.96</dimen>
     <dimen name="marginPercentGuideLineHorizontalTop">0.02</dimen>
+    <dimen name="dp30">30dp</dimen>
 </resources>

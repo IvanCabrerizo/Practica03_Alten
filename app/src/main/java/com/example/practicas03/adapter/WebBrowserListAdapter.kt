@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicas03.data.model.WebBrowserBo
 import com.example.practicas03.databinding.ListBrowserItemBinding
+import com.example.practicas03.imageUrl
 
 class WebBrowserListAdapter :
     ListAdapter<WebBrowserBo, WebBrowserListAdapter.WebBrowserBoViewHolder>(
-        WebBrowserDiffUtilCallBack()
+        WebBrowserDiffUtilCallBack
     ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebBrowserBoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,20 +26,23 @@ class WebBrowserListAdapter :
         holder.bind(getItem(position))
     }
 
-    inner class WebBrowserBoViewHolder(listBrowserBinding: ListBrowserItemBinding) :
+    inner class WebBrowserBoViewHolder(private val listBrowserBinding: ListBrowserItemBinding) :
         RecyclerView.ViewHolder(listBrowserBinding.root) {
         fun bind(item: WebBrowserBo) {
-
+            with(listBrowserBinding){
+                listBrowserItemImgBrowserIcon.imageUrl(item.logo)
+                listBrowserItemLabelName.text = item.name
+                listBrowserItemLabelYear.text = item.year.toString()
+                listBrowserItemLabelCompany.text = item.company
+            }
         }
     }
 
-    private class WebBrowserDiffUtilCallBack : DiffUtil.ItemCallback<WebBrowserBo>() {
-        override fun areItemsTheSame(oldItem: WebBrowserBo, newItem: WebBrowserBo): Boolean {
-            TODO("Not yet implemented")
-        }
+    private object WebBrowserDiffUtilCallBack : DiffUtil.ItemCallback<WebBrowserBo>() {
+        override fun areItemsTheSame(oldItem: WebBrowserBo, newItem: WebBrowserBo): Boolean =
+            oldItem.name == newItem.name
 
-        override fun areContentsTheSame(oldItem: WebBrowserBo, newItem: WebBrowserBo): Boolean {
-            TODO("Not yet implemented")
-        }
+        override fun areContentsTheSame(oldItem: WebBrowserBo, newItem: WebBrowserBo): Boolean =
+            oldItem == newItem
     }
 }
