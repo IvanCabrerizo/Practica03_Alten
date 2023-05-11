@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/webBrowserFragmentMenuOrder"
+        android:icon="@drawable/order"
+        android:title="@string/webBrowserFragmentMenuTittleOrder"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/webBrowserFragmentMenuFilter"
+        android:icon="@drawable/filter"
+        android:title="@string/webBrowserFragmentMenuTittleFilter"
+        app:showAsAction="ifRoom" />
+</menu>

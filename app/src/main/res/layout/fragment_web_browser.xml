@@ -15,9 +15,9 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/web_browser_fragment_menu"
             app:title="@string/webBrowserToolbarListTitle"
-            app:titleMarginStart="@dimen/dp50"
-            app:menu=""/>
+            app:titleMarginStart="@dimen/dp50" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

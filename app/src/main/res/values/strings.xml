@@ -6,4 +6,6 @@
     <string name="listBrowserItemImgMobileIconDescription">Icono de acceso a la versión movil</string>
     <string name="listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription">Icono de acceso a la web oficial</string>
     <string name="labelTextTest">Text Test</string>
+    <string name="webBrowserFragmentMenuTittleFilter">Filtrar</string>
+    <string name="webBrowserFragmentMenuTittleOrder">Ordenar</string>
 </resources>

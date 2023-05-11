@@ -44,8 +44,8 @@
 
     <ImageView
         android:id="@+id/listBrowserItemImgMobileIcon"
-        android:layout_width="@dimen/dp30"
-        android:layout_height="@dimen/dp30"
+        android:layout_width="@dimen/dp25"
+        android:layout_height="@dimen/dp25"
         android:contentDescription="@string/listBrowserItemImgMobileIconDescription"
         android:src="@drawable/web"
         app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
@@ -53,9 +53,9 @@
 
     <ImageView
         android:id="@+id/listBrowserItemImgWebIcon"
-        android:layout_width="@dimen/dp30"
-        android:layout_height="@dimen/dp30"
-        android:layout_marginTop="@dimen/dp20"
+        android:layout_width="@dimen/dp25"
+        android:layout_height="@dimen/dp25"
+        android:layout_marginTop="@dimen/dp30"
         android:contentDescription="@string/listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription"
         android:src="@drawable/mobile"
         app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
@@ -81,6 +81,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineHorizontalTop" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
