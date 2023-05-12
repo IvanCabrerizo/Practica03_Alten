@@ -6,7 +6,7 @@ enum class CompatibleOperatingSystems(val operatingSystem: String) {
     LINUX("Linux"),
     ANDROID("Android"),
     IOS("iOS"),
-    WINDOWS_PHONE("Windows Phone")
+    WINDOWS_PHONE("Windows Phone"),
 }
 
 

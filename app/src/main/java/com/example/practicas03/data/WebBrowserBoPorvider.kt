@@ -20,7 +20,8 @@ fun mockBrowser(number: Int): MutableList<WebBrowserBo> {
                         CompatibleOperatingSystems.IOS,
                         CompatibleOperatingSystems.LINUX,
                         CompatibleOperatingSystems.MAC,
-                        CompatibleOperatingSystems.WINDOWS
+                        CompatibleOperatingSystems.WINDOWS,
+                        CompatibleOperatingSystems.WINDOWS_PHONE,
                     )
                 )
             )

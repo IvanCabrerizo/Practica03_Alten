@@ -29,7 +29,7 @@ class WebBrowserListAdapter :
     inner class WebBrowserBoViewHolder(private val listBrowserBinding: ListBrowserItemBinding) :
         RecyclerView.ViewHolder(listBrowserBinding.root) {
         fun bind(item: WebBrowserBo) {
-            with(listBrowserBinding){
+            with(listBrowserBinding) {
                 listBrowserItemImgBrowserIcon.imageUrl(item.logo)
                 listBrowserItemLabelName.text = item.name
                 listBrowserItemLabelYear.text = item.year.toString()
