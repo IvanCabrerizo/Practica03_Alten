@@ -18,13 +18,24 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practicas03.adapter.WebBrowserListAdapter
 import com.example.practicas03.data.mockBrowser
+import com.example.practicas03.data.model.CompatibleOperatingSystems
 import com.example.practicas03.databinding.FragmentWebBrowserBinding
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 
 class WebBrowserFragment : Fragment(), MenuProvider {
 
     private val binding by lazy { FragmentWebBrowserBinding.inflate(layoutInflater) }
     private val webBrowserAdapter = WebBrowserListAdapter()
     private val chipGroupOS by lazy { binding.webBrowserFragmentChipGroupFilter }
+    private val listOS = listOf<String>(
+        CompatibleOperatingSystems.WINDOWS.name,
+        CompatibleOperatingSystems.MAC.name,
+        CompatibleOperatingSystems.LINUX.name,
+        CompatibleOperatingSystems.ANDROID.name,
+        CompatibleOperatingSystems.WINDOWS_PHONE.name,
+        CompatibleOperatingSystems.IOS.name
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,23 +66,22 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.webBrowserFragmentMenuOrder -> {
-                orderBrowser(
+                orderDialog(
                     requireContext(),
                     listOf("Nombre", "Compañia", "Año")
                 ) { option ->
-                    val sortedList = when (option) {
-                        "Nombre" -> webBrowserAdapter.currentList.sortedBy { it.name }
-                        "Compañia" -> webBrowserAdapter.currentList.sortedBy { it.company }
-                        "Año" -> webBrowserAdapter.currentList.sortedBy { it.year }
-                        else -> webBrowserAdapter.currentList
-                    }
-                    webBrowserAdapter.submitList(sortedList)
+                    orderBrowser(option)
                 }
                 true
             }
 
             R.id.webBrowserFragmentMenuFilter -> {
-
+                filterDialog(
+                    requireContext(),
+                    listOS
+                ) { options ->
+                    chipGenerator(requireContext(), chipGroupOS, options)
+                }
                 true
             }
 
@@ -79,7 +89,17 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         }
     }
 
-    private fun orderBrowser(
+    private fun orderBrowser(option: String?) {
+        val sortedList = when (option) {
+            "Nombre" -> webBrowserAdapter.currentList.sortedBy { it.name }
+            "Compañia" -> webBrowserAdapter.currentList.sortedBy { it.company }
+            "Año" -> webBrowserAdapter.currentList.sortedBy { it.year }
+            else -> webBrowserAdapter.currentList
+        }
+        webBrowserAdapter.submitList(sortedList)
+    }
+
+    private fun orderDialog(
         context: Context,
         listOption: List<String>,
         optionCallback: (String?) -> Unit
@@ -116,19 +136,47 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         alertDialog.show()
     }
 
-    /*    private fun chipGenerator(context: Context, chipGroup: ChipGroup) {
-            val compatibleList = listOf<CompatibleOperatingSystems>(
-                CompatibleOperatingSystems.WINDOWS,
-                CompatibleOperatingSystems.MAC,
-                CompatibleOperatingSystems.LINUX,
-                CompatibleOperatingSystems.ANDROID,
-                CompatibleOperatingSystems.WINDOWS_PHONE,
-                CompatibleOperatingSystems.IOS,
-            )
-            for (os in compatibleList) {
-                val chip = Chip(context)
-                chip.text = os.operatingSystem
-                chipGroup.addView(chip)
+    private fun filterDialog(
+        context: Context,
+        options: List<String>,
+        selectionCallback: (List<String>) -> Unit
+    ) {
+        val selectedOptions = mutableListOf<String>()
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Seleccionar opciones")
+
+        val checkedItems = BooleanArray(options.size) { false }
+
+        builder.setMultiChoiceItems(
+            options.toTypedArray(),
+            checkedItems
+        ) { _, which, isChecked ->
+            val option = options[which]
+            if (isChecked) {
+                selectedOptions.add(option)
+            } else {
+                selectedOptions.remove(option)
             }
-        }*/
+        }
+
+        builder.setPositiveButton("Aceptar") { _, _ ->
+            selectionCallback(selectedOptions)
+        }
+
+        builder.setNegativeButton("Cancelar") { _, _ ->
+            selectionCallback(emptyList())
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    private fun chipGenerator(context: Context, chipGroup: ChipGroup, lisOs: List<String>) {
+        for (os in lisOs) {
+            val chip = Chip(context)
+            chip.text = os
+            chipGroup.addView(chip)
+        }
+    }
 }
