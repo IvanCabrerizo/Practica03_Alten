@@ -10,4 +10,6 @@
     <string name="webBrowserFragmentMenuTittleOrder">Ordenar</string>
     <string name="webBrowserViewerFragmentToolBarTittle">WebTittle</string>
     <string name="webBrowserViewerFragmentBtnBackButtonIconDescription">Imagen de una flecha hacia detras</string>
+    <string name="WebBrowserOrderDialogTittle">Ordenar</string>
+    <string name="WebBrowserFilterDialogTittle">Filtrar</string>
 </resources>

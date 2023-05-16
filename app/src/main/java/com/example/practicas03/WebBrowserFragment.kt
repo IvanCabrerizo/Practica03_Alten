@@ -111,7 +111,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         var option: String?
 
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Seleccionar opción")
+        builder.setTitle(getString(R.string.WebBrowserOrderDialogTittle))
 
         val radioGroup = RadioGroup(context)
         radioGroup.orientation = RadioGroup.VERTICAL
@@ -146,7 +146,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         selectionCallback: (List<String>) -> Unit
     ) {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Seleccionar opciones")
+        builder.setTitle(getString(R.string.WebBrowserFilterDialogTittle))
 
         builder.setMultiChoiceItems(
             options.toTypedArray(),
