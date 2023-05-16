@@ -28,15 +28,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     private val binding by lazy { FragmentWebBrowserBinding.inflate(layoutInflater) }
     private val webBrowserAdapter = WebBrowserListAdapter()
     private val chipGroupOS by lazy { binding.webBrowserFragmentChipGroupFilter }
-    private val listOS = listOf<String>(
-        CompatibleOperatingSystems.WINDOWS.operatingSystem,
-        CompatibleOperatingSystems.MAC.operatingSystem,
-        CompatibleOperatingSystems.LINUX.operatingSystem,
-        CompatibleOperatingSystems.ANDROID.operatingSystem,
-        CompatibleOperatingSystems.WINDOWS_PHONE.operatingSystem,
-        CompatibleOperatingSystems.IOS.operatingSystem
-    )
-    private val listOs2 = CompatibleOperatingSystems.values().map { it.operatingSystem }
+    private val listOS = CompatibleOperatingSystems.values().map { it.operatingSystem }
     private val oSSelected = listOS.map { false }.toBooleanArray()
     private val originalList = mockBrowser(10)
     private val chipsCreated = mutableListOf<Chip>()

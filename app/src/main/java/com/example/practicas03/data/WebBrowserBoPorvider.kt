@@ -2,7 +2,7 @@ package com.example.practicas03.data
 
 import com.example.practicas03.data.model.CompatibleOperatingSystems
 import com.example.practicas03.data.model.WebBrowserBo
-import kotlin.random.Random
+import com.example.practicas03.randomList
 
 fun mockBrowser(number: Int): List<WebBrowserBo> {
     /*for (index in 0..number) {
@@ -99,17 +99,4 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             CompatibleOperatingSystems.values().toList().randomList()
         )
     )
-}
-
-fun List<CompatibleOperatingSystems>.randomList(): List<CompatibleOperatingSystems> {
-    var size = Random.nextInt(this.size)
-    val randomItems = mutableListOf<CompatibleOperatingSystems>()
-    while (size > 0) {
-        val nextRandom = this.random()
-        if (!randomItems.contains(nextRandom)) {
-            randomItems.add(nextRandom)
-            size--
-        }
-    }
-    return randomItems.toList()
 }
