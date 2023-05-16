@@ -47,7 +47,7 @@
         android:layout_width="@dimen/dp25"
         android:layout_height="@dimen/dp25"
         android:contentDescription="@string/listBrowserItemImgMobileIconDescription"
-        android:src="@drawable/web"
+        android:src="@drawable/mobile"
         app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
         app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
 
@@ -57,7 +57,7 @@
         android:layout_height="@dimen/dp25"
         android:layout_marginTop="@dimen/dp30"
         android:contentDescription="@string/listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription"
-        android:src="@drawable/mobile"
+        android:src="@drawable/web"
         app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
         app:layout_constraintTop_toBottomOf="@id/listBrowserItemImgMobileIcon" />
 

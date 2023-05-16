@@ -1,10 +1,13 @@
 package com.example.practicas03.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.practicas03.R
 import com.example.practicas03.data.model.WebBrowserBo
 import com.example.practicas03.databinding.ListBrowserItemBinding
 import com.example.practicas03.imageUrl
@@ -34,6 +37,21 @@ class WebBrowserListAdapter :
                 listBrowserItemLabelName.text = item.name
                 listBrowserItemLabelYear.text = item.year.toString()
                 listBrowserItemLabelCompany.text = item.company
+                listBrowserItemImgWebIcon.setOnClickListener {
+                    val browserUrl = item.web
+                    val browserName = item.name
+                    val bundle = Bundle()
+
+                    with(bundle) {
+                        putString("browserName", browserName)
+                        putString("browserUrl", browserUrl)
+                    }
+
+                    itemView.findNavController().navigate(
+                        R.id.action_webBrowserFragment_to_browserViewerFragment,
+                        bundle
+                    )
+                }
             }
         }
     }

@@ -24,6 +24,12 @@
         <action
             android:id="@+id/action_webBrowserFragment_to_browserViewerFragment"
             app:destination="@id/browserViewerFragment" />
+        <argument
+            android:name="browserName"
+            app:argType="string" />
+        <argument
+            android:name="browserUrl"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/browserViewerFragment"

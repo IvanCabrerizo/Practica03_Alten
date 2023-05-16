@@ -8,4 +8,6 @@
     <string name="labelTextTest">Text Test</string>
     <string name="webBrowserFragmentMenuTittleFilter">Filtrar</string>
     <string name="webBrowserFragmentMenuTittleOrder">Ordenar</string>
+    <string name="webBrowserViewerFragmentToolBarTittle">WebTittle</string>
+    <string name="webBrowserViewerFragmentBtnBackButtonIconDescription">Imagen de una flecha hacia detras</string>
 </resources>

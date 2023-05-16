@@ -3,9 +3,8 @@ package com.example.practicas03.data
 import com.example.practicas03.data.model.CompatibleOperatingSystems
 import com.example.practicas03.data.model.WebBrowserBo
 
-fun mockBrowser(number: Int): MutableList<WebBrowserBo> {
-    val listBrowser: MutableList<WebBrowserBo> = mutableListOf()
-    for (index in 0..number) {
+fun mockBrowser(number: Int): List<WebBrowserBo> {
+    /*for (index in 0..number) {
         if (index % 2 == 0) {
             listBrowser.add(
                 WebBrowserBo(
@@ -13,7 +12,7 @@ fun mockBrowser(number: Int): MutableList<WebBrowserBo> {
                     "Google",
                     2000,
                     "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
-                    "www.alten.es",
+                    "https://www.alten.es",
                     true,
                     listOf(
                         CompatibleOperatingSystems.ANDROID,
@@ -32,7 +31,7 @@ fun mockBrowser(number: Int): MutableList<WebBrowserBo> {
                     "Google",
                     1990,
                     "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
-                    "www.alten.es",
+                    "https://www.alten.es",
                     false,
                     listOf(
                         CompatibleOperatingSystems.LINUX,
@@ -42,6 +41,75 @@ fun mockBrowser(number: Int): MutableList<WebBrowserBo> {
                 )
             )
         }
-    }
-    return listBrowser
+    }*/
+    return mutableListOf(
+        WebBrowserBo(
+            "Brave",
+            "Google",
+            2002,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.IOS,
+            )
+        ),
+        WebBrowserBo(
+            "Chromium",
+            "Google",
+            1200,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.IOS,
+            )
+        ),
+        WebBrowserBo(
+            "Opera",
+            "Microsoft",
+            2000,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.ANDROID,
+            )
+        ),
+        WebBrowserBo(
+            "Internet Explorer",
+            "Microsoft",
+            1990,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.ANDROID,
+                CompatibleOperatingSystems.LINUX,
+            )
+        ),
+        WebBrowserBo(
+            "Mozilla",
+            "Google",
+            2000,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.LINUX,
+            )
+        ),
+        WebBrowserBo(
+            "Chrome",
+            "Google",
+            2000,
+            "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
+            "https://www.alten.es",
+            true,
+            listOf(
+                CompatibleOperatingSystems.IOS,
+                CompatibleOperatingSystems.ANDROID,
+            )
+        )
+    )
 }
