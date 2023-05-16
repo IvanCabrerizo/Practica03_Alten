@@ -49,7 +49,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             2002,
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
-            true,
+            false,
             listOf(
                 CompatibleOperatingSystems.IOS,
             )
@@ -71,7 +71,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             2000,
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
-            true,
+            false,
             listOf(
                 CompatibleOperatingSystems.ANDROID,
             )

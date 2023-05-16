@@ -2,6 +2,7 @@ package com.example.practicas03.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -37,6 +38,12 @@ class WebBrowserListAdapter :
                 listBrowserItemLabelName.text = item.name
                 listBrowserItemLabelYear.text = item.year.toString()
                 listBrowserItemLabelCompany.text = item.company
+
+                if (item.mobile) {
+                    listBrowserItemImgMobileIcon.visibility = View.VISIBLE
+                } else {
+                    listBrowserItemImgMobileIcon.visibility = View.GONE
+                }
                 listBrowserItemImgWebIcon.setOnClickListener {
                     val browserUrl = item.web
                     val browserName = item.name
