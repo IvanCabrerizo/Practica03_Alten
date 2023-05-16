@@ -2,6 +2,7 @@ package com.example.practicas03.data
 
 import com.example.practicas03.data.model.CompatibleOperatingSystems
 import com.example.practicas03.data.model.WebBrowserBo
+import kotlin.random.Random
 
 fun mockBrowser(number: Int): List<WebBrowserBo> {
     /*for (index in 0..number) {
@@ -50,9 +51,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             false,
-            listOf(
-                CompatibleOperatingSystems.IOS,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         ),
         WebBrowserBo(
             "Chromium",
@@ -61,9 +60,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             true,
-            listOf(
-                CompatibleOperatingSystems.IOS,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         ),
         WebBrowserBo(
             "Opera",
@@ -72,9 +69,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             false,
-            listOf(
-                CompatibleOperatingSystems.ANDROID,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         ),
         WebBrowserBo(
             "Internet Explorer",
@@ -83,10 +78,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             true,
-            listOf(
-                CompatibleOperatingSystems.ANDROID,
-                CompatibleOperatingSystems.LINUX,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         ),
         WebBrowserBo(
             "Mozilla",
@@ -95,9 +87,7 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             true,
-            listOf(
-                CompatibleOperatingSystems.LINUX,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         ),
         WebBrowserBo(
             "Chrome",
@@ -106,10 +96,20 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             "https://www.alten.com/wp-content/uploads/2019/03/LOGO_Alten_Couleurs_Black.png",
             "https://www.alten.es",
             true,
-            listOf(
-                CompatibleOperatingSystems.IOS,
-                CompatibleOperatingSystems.ANDROID,
-            )
+            CompatibleOperatingSystems.values().toList().randomList()
         )
     )
+}
+
+fun List<CompatibleOperatingSystems>.randomList(): List<CompatibleOperatingSystems> {
+    var size = Random.nextInt(this.size)
+    val randomItems = mutableListOf<CompatibleOperatingSystems>()
+    while (size > 0) {
+        val nextRandom = this.random()
+        if (!randomItems.contains(nextRandom)) {
+            randomItems.add(nextRandom)
+            size--
+        }
+    }
+    return randomItems.toList()
 }
