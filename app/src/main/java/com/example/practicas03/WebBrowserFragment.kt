@@ -54,7 +54,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        val webBrowserRecyclerView = binding.attendanceListCalendar
+        val webBrowserRecyclerView = binding.webBrowserFragmentListBrowsers
 
         webBrowserRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         webBrowserRecyclerView.adapter = webBrowserAdapter
