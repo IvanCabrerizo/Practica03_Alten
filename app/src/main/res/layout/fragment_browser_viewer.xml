@@ -8,8 +8,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/webBrowserViewerFragmentAppBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/browserViewerFragmentAppBar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -19,30 +19,18 @@
             android:layout_height="?attr/actionBarSize"
             app:titleMarginStart="@dimen/dp50">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/browserViewerFragmentToolbarConstraint">
 
                 <ImageButton
                     android:id="@+id/webBrowserViewerFragmentBtnBackButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp16"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    style="@style/browserViewerFragmentBackBtn"
                     android:contentDescription="@string/webBrowserViewerFragmentBtnBackButtonIconDescription"
-                    android:src="@android:drawable/ic_menu_revert"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/webBrowserViewerFragmentLabelTittleToolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp16"
-                    android:layout_marginTop="@dimen/dp16"
-                    android:text="@string/webBrowserViewerFragmentToolBarTittle"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    style="@style/browserViewerFragmentLabelTittle"
                     app:layout_constraintStart_toEndOf="@id/webBrowserViewerFragmentBtnBackButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,10 +40,10 @@
 
     <WebView
         android:id="@+id/webBrowserViewerFragmentWebView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        style="@style/browserViewerFragmentWebView"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/webBrowserViewerFragmentAppBarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

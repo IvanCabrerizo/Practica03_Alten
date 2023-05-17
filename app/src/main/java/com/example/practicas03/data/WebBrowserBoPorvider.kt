@@ -1,8 +1,14 @@
 package com.example.practicas03.data
 
+import android.util.Log
 import com.example.practicas03.data.model.CompatibleOperatingSystems
 import com.example.practicas03.data.model.WebBrowserBo
+import com.example.practicas03.data.model.WebBrowserDto
 import com.example.practicas03.randomList
+import com.example.practicas03.toBo
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 fun mockBrowser(number: Int): List<WebBrowserBo> {
     /*for (index in 0..number) {
@@ -99,4 +105,57 @@ fun mockBrowser(number: Int): List<WebBrowserBo> {
             CompatibleOperatingSystems.values().toList().randomList()
         )
     )
+}
+
+val browserList = mutableListOf<WebBrowserDto>()
+
+fun transformListWebBrowserBo(): MutableList<WebBrowserBo> {
+    val browserListBo = mutableListOf<WebBrowserBo>()
+    browserList.map {
+        browserListBo.add(it.toBo())
+        Log.i("PROBLEMA", browserListBo.toString())
+    }
+    return browserListBo
+}
+
+fun getRetrofit(): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl("https://mocki.io/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+}
+
+fun getWebBrowserDto() {
+    val retrofit = getRetrofit()
+    val webBrowserApi = retrofit.create(WebBrowserApiService::class.java)
+    val call = webBrowserApi.getWebBrowsers()
+
+    call.enqueue(object : retrofit2.Callback<List<WebBrowserDto>> {
+        override fun onResponse(
+            call: Call<List<WebBrowserDto>>,
+            response: retrofit2.Response<List<WebBrowserDto>>
+        ) {
+            if (response.isSuccessful) {
+                Log.i("SUCCESSFUL", "Correcto")
+                response.body()?.forEach { browser ->
+                    val newBrowser = WebBrowserDto(
+                        name = browser.name,
+                        company = browser.company,
+                        year = browser.year,
+                        logo = browser.logo,
+                        web = browser.web,
+                        mobile = browser.mobile,
+                        compatible = browser.compatible
+                    )
+                    browserList.add(newBrowser)
+                }
+            } else {
+                Log.e("FALLO", "Petición a la Api Fallida")
+            }
+        }
+
+        override fun onFailure(call: Call<List<WebBrowserDto>>, t: Throwable) {
+            Log.e("FALLO", "Conexion Api Fallido")
+        }
+    })
 }

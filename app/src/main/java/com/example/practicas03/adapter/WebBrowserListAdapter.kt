@@ -39,11 +39,12 @@ class WebBrowserListAdapter :
                 listBrowserItemLabelYear.text = item.year.toString()
                 listBrowserItemLabelCompany.text = item.company
 
-                if (item.mobile) {
-                    listBrowserItemImgMobileIcon.visibility = View.VISIBLE
+                listBrowserItemImgMobileIcon.visibility = if (item.mobile) {
+                    View.VISIBLE
                 } else {
-                    listBrowserItemImgMobileIcon.visibility = View.GONE
+                    View.GONE
                 }
+
                 listBrowserItemImgWebIcon.setOnClickListener {
                     val browserUrl = item.web
                     val browserName = item.name

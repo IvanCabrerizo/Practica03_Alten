@@ -9,7 +9,6 @@ enum class CompatibleOperatingSystems(val operatingSystem: String) {
     WINDOWS_PHONE("Windows Phone"),
 }
 
-
 data class WebBrowserBo(
     val name: String,
     val company: String,
@@ -17,5 +16,5 @@ data class WebBrowserBo(
     val logo: String,
     val web: String,
     val mobile: Boolean,
-    val compatible: List<CompatibleOperatingSystems>,
+    val compatible: List<CompatibleOperatingSystems?>?,
 )

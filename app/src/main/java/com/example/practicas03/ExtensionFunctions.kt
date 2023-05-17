@@ -25,9 +25,23 @@ fun List<CompatibleOperatingSystems>.randomList(): List<CompatibleOperatingSyste
 }
 
 fun WebBrowserDto.toBo(): WebBrowserBo {
-    val result = WebBrowserBo(
-        this.name.toString(),
-        this.company.toString(),
+    val compatibleList = this.compatible?.map { when(it){
+        "Windows" -> CompatibleOperatingSystems.WINDOWS
+        "MACOS" -> CompatibleOperatingSystems.MAC
+        "LINUX" -> CompatibleOperatingSystems.LINUX
+        "ANDROID" -> CompatibleOperatingSystems.ANDROID
+        "IOS" -> CompatibleOperatingSystems.IOS
+        else -> null
+        }
+    } ?: emptyList()
 
+    return WebBrowserBo(
+        this.name ?: "Unknown name",
+        this.company ?: "Unknown company",
+        this.year ?: 0,
+        this.logo ?: "https://www.redplanet.es/wp-content/uploads/2022/03/estatus-404-not-found.jpg",
+        this.web ?: "https://www.google.com",
+        this.mobile ?: false,
+        compatibleList
     )
 }

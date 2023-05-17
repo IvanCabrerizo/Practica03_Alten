@@ -17,8 +17,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practicas03.adapter.WebBrowserListAdapter
-import com.example.practicas03.data.mockBrowser
 import com.example.practicas03.data.model.CompatibleOperatingSystems
+import com.example.practicas03.data.transformListWebBrowserBo
 import com.example.practicas03.databinding.FragmentWebBrowserBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -30,7 +30,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     private val chipGroupOS by lazy { binding.webBrowserFragmentChipGroupFilter }
     private val listOS = CompatibleOperatingSystems.values().map { it.operatingSystem }
     private val oSSelected = listOS.map { false }.toBooleanArray()
-    private val originalList = mockBrowser(10)
+    private val originalList = transformListWebBrowserBo()
     private val chipsCreated = mutableListOf<Chip>()
     private var orderMemory: String? = null
 
@@ -188,7 +188,8 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     private fun applyFilters() {
         val selectedOperatingSystems = listOS.filterIndexed { index, _ -> oSSelected[index] }
         val filteredList = originalList.filter { browser ->
-            browser.compatible.map { it.operatingSystem }.containsAll(selectedOperatingSystems)
+            browser.compatible?.map { it?.operatingSystem ?: "Unknown" }
+                ?.containsAll(selectedOperatingSystems) ?: false
         }
 
         if (orderMemory != null) {

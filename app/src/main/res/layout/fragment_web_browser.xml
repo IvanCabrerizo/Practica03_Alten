@@ -8,8 +8,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/webBrowserFragmentAppBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/browserFragmentAppBar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -25,8 +25,7 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/webBrowserFragmentChipGroupFilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/browserFragmentChipGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/webBrowserFragmentAppBarLayout">
@@ -36,10 +35,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/webBrowserFragmentListBrowsers"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        style="@style/browserFragmentList"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/webBrowserFragmentChipGroupFilter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
