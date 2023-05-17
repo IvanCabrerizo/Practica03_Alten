@@ -6,6 +6,8 @@ import com.example.practicas03.data.model.WebBrowserBo
 import com.example.practicas03.data.model.WebBrowserDto
 import com.example.practicas03.randomList
 import com.example.practicas03.toBo
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -119,16 +121,23 @@ fun transformListWebBrowserBo(): MutableList<WebBrowserBo> {
 }
 
 fun getRetrofit(): Retrofit {
+    val interceptor = HttpLoggingInterceptor()
+    interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+    val httpClient = OkHttpClient.Builder()
+    httpClient.addInterceptor(interceptor)
+
     return Retrofit.Builder()
         .baseUrl("https://mocki.io/")
         .addConverterFactory(GsonConverterFactory.create())
+        .client(httpClient.build())
         .build()
 }
 
 fun getWebBrowserDto() {
     val retrofit = getRetrofit()
-    val webBrowserApi = retrofit.create(WebBrowserApiService::class.java)
-    val call = webBrowserApi.getWebBrowsers()
+    val webBrowserApiService = retrofit.create(WebBrowserApiService::class.java)
+    val call = webBrowserApiService.getWebBrowsers()
 
     call.enqueue(object : retrofit2.Callback<List<WebBrowserDto>> {
         override fun onResponse(
