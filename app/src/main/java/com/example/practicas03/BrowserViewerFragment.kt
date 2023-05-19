@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.practicas03.databinding.FragmentBrowserViewerBinding
 
 class BrowserViewerFragment : Fragment() {
 
     private val binding by lazy { FragmentBrowserViewerBinding.inflate(layoutInflater) }
-
+    private val args by navArgs<WebBrowserFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,16 +24,14 @@ class BrowserViewerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val browserName = arguments?.getString("browserName")
-        val browserUrl = arguments?.getString("browserUrl")
+        /*        val browserName = arguments?.getString("browserName")
+                val browserUrl = arguments?.getString("browserUrl")*/
 
-        if (browserUrl != null) {
-            with(binding){
-                webBrowserViewerFragmentWebView.loadUrl(browserUrl)
-                webBrowserViewerFragmentLabelTittleToolbar.text = browserName
-                webBrowserViewerFragmentBtnBackButton.setOnClickListener {
-                    findNavController().navigate(R.id.action_browserViewerFragment_to_webBrowserFragment)
-                }
+        with(binding) {
+            webBrowserViewerFragmentWebView.loadUrl(args.browserUrl)
+            webBrowserViewerFragmentLabelTitleToolbar.text = args.browserName
+            webBrowserViewerFragmentBtnBackButton.setOnClickListener {
+                findNavController().navigate(R.id.action_browserViewerFragment_to_webBrowserFragment)
             }
         }
     }

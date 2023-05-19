@@ -8,27 +8,41 @@
     </style>
 
     <style name="listBrowserImage">
-        <item name="android:layout_width">@dimen/dp120</item>
-        <item name="android:layout_height">@dimen/dp120</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_width">@dimen/dp100</item>
+        <item name="android:layout_height">@dimen/dp100</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">@dimen/dp5</item>
     </style>
 
-    <style name="listBrowserLabelLeft">
+    <style name="listBrowserLabelLeftTop">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/dp20</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
+    </style>
+
+    <style name="listBrowserLabelLeftBottom">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp20</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
+        <item name="android:textColor">@color/md_theme_dark_inversePrimary</item>
     </style>
 
     <style name="listBrowserLabelRight">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/dp10</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
+
     </style>
 
     <style name="listBrowserMobileIcon">
         <item name="android:layout_width">@dimen/dp25</item>
         <item name="android:layout_height">@dimen/dp25</item>
         <item name="android:src">@drawable/mobile</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
     </style>
 
     <style name="listBrowserWebIcon">
@@ -81,7 +95,8 @@
         <item name="android:layout_marginStart">@dimen/dp16</item>
         <item name="android:layout_marginTop">@dimen/dp16</item>
         <item name="android:text">@string/webBrowserViewerFragmentToolBarTittle</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6
+        </item>
     </style>
 
     <style name="browserViewerFragmentWebView">

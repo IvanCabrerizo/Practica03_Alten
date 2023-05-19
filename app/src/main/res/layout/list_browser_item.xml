@@ -1,66 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp">
 
-    <ImageView
-        android:id="@+id/listBrowserItemImgBrowserIcon"
-        style="@style/listBrowserImage"
-        android:contentDescription="@string/listBrowserItemImgBrowserIconDescription"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemGuideLineVerticalStart"
-        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/listBrowserItemImgBrowserIcon"
+            style="@style/listBrowserImage"
+            app:contentPadding="@dimen/dp16"
+            app:layout_constraintBottom_toBottomOf="@id/listBrowserItemGuideLineHorizontalBottom"
+            app:layout_constraintStart_toEndOf="@id/listBrowserItemGuideLineVerticalStart"
+            app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop"
+            app:strokeColor="@color/md_theme_light_outline"
+            app:strokeWidth="@dimen/dp1" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/listBrowserItemLabelName"
-        style="@style/listBrowserLabelLeft"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
-        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop"
-        tools:text="@string/labelTextTest" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listBrowserItemLabelName"
+            style="@style/listBrowserLabelLeftTop"
+            app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
+            app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop"
+            tools:text="@string/labelTextTest" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/listBrowserItemLabelYear"
-        style="@style/listBrowserLabelLeft"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
-        app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
-        tools:text="@string/labelTextTest" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listBrowserItemLabelYear"
+            style="@style/listBrowserLabelLeftBottom"
+            app:layout_constraintStart_toEndOf="@id/listBrowserItemImgBrowserIcon"
+            app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
+            tools:text="@string/labelTextTest" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/listBrowserItemLabelCompany"
-        style="@style/listBrowserLabelRight"
-        app:layout_constraintStart_toEndOf="@id/listBrowserItemLabelYear"
-        app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
-        tools:text="@string/labelTextTest" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listBrowserItemLabelCompany"
+            style="@style/listBrowserLabelRight"
+            app:layout_constraintStart_toEndOf="@id/listBrowserItemLabelYear"
+            app:layout_constraintTop_toBottomOf="@id/listBrowserItemLabelName"
+            tools:text="@string/labelTextTest" />
 
-    <ImageView
-        android:id="@+id/listBrowserItemImgMobileIcon"
-        style="@style/listBrowserMobileIcon"
-        android:contentDescription="@string/listBrowserItemImgMobileIconDescription"
-        app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
-        app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
+        <ImageView
+            android:id="@+id/listBrowserItemImgMobileIcon"
+            style="@style/listBrowserMobileIcon"
+            android:contentDescription="@string/listBrowserItemImgMobileIconDescription"
+            app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
+            app:layout_constraintTop_toTopOf="@id/listBrowserItemGuideLineHorizontalTop" />
 
-    <ImageView
-        android:id="@+id/listBrowserItemImgWebIcon"
-        style="@style/listBrowserWebIcon"
-        android:contentDescription="@string/listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription"
-        app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
-        app:layout_constraintTop_toBottomOf="@id/listBrowserItemImgMobileIcon" />
+        <ImageView
+            android:id="@+id/listBrowserItemImgWebIcon"
+            style="@style/listBrowserWebIcon"
+            android:contentDescription="@string/listBrowserItemImgBrowserIconListBrowserItemImgWebIconDescription"
+            app:layout_constraintEnd_toEndOf="@id/listBrowserItemGuideLineVerticalEnd"
+            app:layout_constraintTop_toBottomOf="@id/listBrowserItemImgMobileIcon" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/listBrowserItemGuideLineVerticalStart"
-        style="@style/listBrowserItemGuidelineVertical"
-        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalStart" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/listBrowserItemGuideLineVerticalStart"
+            style="@style/listBrowserItemGuidelineVertical"
+            app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalStart" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/listBrowserItemGuideLineVerticalEnd"
-        style="@style/listBrowserItemGuidelineVertical"
-        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalEnd" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/listBrowserItemGuideLineVerticalEnd"
+            style="@style/listBrowserItemGuidelineVertical"
+            app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineVerticalEnd" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/listBrowserItemGuideLineHorizontalTop"
-        style="@style/listBrowserItemGuidelineHorizontal"
-        app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineHorizontalTop" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/listBrowserItemGuideLineHorizontalTop"
+            style="@style/listBrowserItemGuidelineHorizontal"
+            app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineHorizontalTop" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/listBrowserItemGuideLineHorizontalBottom"
+            style="@style/listBrowserItemGuidelineHorizontal"
+            app:layout_constraintGuide_percent="@dimen/marginPercentGuideLineHorizontalBottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
