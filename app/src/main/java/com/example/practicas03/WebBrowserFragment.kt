@@ -18,6 +18,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practicas03.adapter.WebBrowserListAdapter
 import com.example.practicas03.data.model.CompatibleOperatingSystems
+import com.example.practicas03.data.model.WebBrowserBo
 import com.example.practicas03.data.transformListWebBrowserBo
 import com.example.practicas03.databinding.FragmentWebBrowserBinding
 import com.google.android.material.chip.Chip
@@ -33,6 +34,14 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     private val originalList = transformListWebBrowserBo()
     private val chipsCreated = mutableListOf<Chip>()
     private var orderMemory: String? = null
+    private lateinit var webBrowserFragmentContext: Context
+    private lateinit var orderOptionsArray: Array<String>
+    private var orderList: List<String> = emptyList()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        webBrowserFragmentContext = context
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,10 +56,14 @@ class WebBrowserFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        val webBrowserRecyclerView = binding.webBrowserFragmentListBrowsers
 
-        webBrowserRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        webBrowserRecyclerView.adapter = webBrowserAdapter
+        initOrderList()
+        orderList = orderOptionsArray.toList()
+
+        with(binding.webBrowserFragmentListBrowsers) {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = webBrowserAdapter
+        }
 
         webBrowserAdapter.submitList(originalList)
     }
@@ -64,7 +77,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
             R.id.webBrowserFragmentMenuOrder -> {
                 orderDialog(
                     requireContext(),
-                    listOf("Nombre", "Compañia", "Año")
+                    orderList
                 ) { option ->
                     orderBrowser(option)
                 }
@@ -85,14 +98,15 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         }
     }
 
+    private fun initOrderList() {
+        orderOptionsArray =
+            webBrowserFragmentContext.resources.getStringArray(R.array.WebBrowserFragmentOrderOptions)
+
+    }
+
     private fun orderBrowser(option: String?) {
         orderMemory = option
-        val sortedList = when (option) {
-            "Nombre" -> webBrowserAdapter.currentList.sortedBy { it.name }
-            "Compañia" -> webBrowserAdapter.currentList.sortedBy { it.company }
-            "Año" -> webBrowserAdapter.currentList.sortedBy { it.year }
-            else -> webBrowserAdapter.currentList
-        }
+        val sortedList = sortList(webBrowserAdapter.currentList, option)
         webBrowserAdapter.submitList(sortedList)
     }
 
@@ -117,14 +131,14 @@ class WebBrowserFragment : Fragment(), MenuProvider {
 
         builder.setView(radioGroup)
 
-        builder.setPositiveButton("Aceptar") { _, _ ->
+        builder.setPositiveButton(getString(R.string.dialogAccept)) { _, _ ->
             val selectedRadioButton =
                 radioGroup.findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
             option = selectedRadioButton?.text?.toString()
             optionCallback(option)
         }
 
-        builder.setNegativeButton("Cancelar") { _, _ ->
+        builder.setNegativeButton(getString(R.string.dialogCancel)) { _, _ ->
             option = null
             optionCallback(option)
         }
@@ -193,12 +207,7 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         }
 
         if (orderMemory != null) {
-            val sortedList = when (orderMemory) {
-                "Nombre" -> filteredList.sortedBy { it.name }
-                "Compañia" -> filteredList.sortedBy { it.company }
-                "Año" -> filteredList.sortedBy { it.year }
-                else -> filteredList
-            }
+            val sortedList = sortList(filteredList, orderMemory)
             webBrowserAdapter.submitList(sortedList)
         } else {
             webBrowserAdapter.submitList(filteredList)
@@ -210,6 +219,15 @@ class WebBrowserFragment : Fragment(), MenuProvider {
         chipGroupOS.removeAllViews()
         for (chip in selectedChips) {
             chipGroupOS.addView(chip)
+        }
+    }
+
+    private fun sortList(list: List<WebBrowserBo>, option: String?): List<WebBrowserBo> {
+        return when (option) {
+            "Nombre" -> list.sortedBy { it.name }
+            "Compañia" -> list.sortedBy { it.company }
+            "Año" -> list.sortedBy { it.year }
+            else -> list
         }
     }
 }

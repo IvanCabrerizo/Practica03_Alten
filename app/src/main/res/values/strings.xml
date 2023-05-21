@@ -12,4 +12,11 @@
     <string name="webBrowserViewerFragmentBtnBackButtonIconDescription">Imagen de una flecha hacia detras</string>
     <string name="WebBrowserOrderDialogTittle">Ordenar</string>
     <string name="WebBrowserFilterDialogTittle">Filtrar</string>
+    <string name="dialogAccept">Aceptar</string>
+    <string name="dialogCancel">Cancelar</string>
+    <string-array name="WebBrowserFragmentOrderOptions">
+        <item>Nombre</item>
+        <item>Compañia</item>
+        <item>Año</item>
+    </string-array>
 </resources>

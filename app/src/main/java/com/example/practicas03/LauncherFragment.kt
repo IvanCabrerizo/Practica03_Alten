@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 class LauncherFragment : Fragment() {
 
     private val binding by lazy { FragmentLauncherBinding.inflate(layoutInflater) }
+    private val splashDelay: Long = 2000
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +30,7 @@ class LauncherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             getWebBrowserDto()
-            delay(2000)
+            delay(splashDelay)
             findNavController().navigate(R.id.action_fragmentLauncher_to_webBrowserFragment)
         }
     }
